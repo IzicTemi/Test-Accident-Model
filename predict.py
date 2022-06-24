@@ -1,9 +1,18 @@
 import pickle
+from xml.sax.handler import feature_external_ges
 
 from flask import Flask, request, jsonify
 
 with open('model.bin', 'rb') as f_in:
     (dv, model) = pickle.load(f_in)
+
+def transform(input):
+    features = {}
+    features['MONATSZAHL'] = input['Category']
+    features['AUSPRAEGUNG'] = input['Type']
+    features['JAHR'] = input['Year']
+    features['MONAT'] = input['Month']
+    return features
 
 def predict(input):
     X = dv.transform(input)
@@ -16,7 +25,9 @@ app = Flask('accidents-prediction')
 def predict_endpoint():
     input = request.get_json()
 
-    pred = predict(input)
+    features = transform(input)
+
+    pred = predict(features)
 
     result = {
         "prediction": pred
