@@ -30,7 +30,7 @@ def predict_endpoint():
     pred = predict(features)
 
     result = {
-        "prediction": pred
+        "prediction": round(pred)
     }
 
     return jsonify(result)
