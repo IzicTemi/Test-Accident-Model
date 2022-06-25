@@ -1,1 +1,1 @@
-web: waitress-serve predict:app
+web: waitress-serve --listen "*:$PORT" predict:app
