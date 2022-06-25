@@ -1,1 +1,1 @@
-web: gunicorn predict:app
+web: waitress-serve predict:app
