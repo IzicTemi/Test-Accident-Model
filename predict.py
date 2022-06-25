@@ -11,7 +11,7 @@ def transform(input):
     features['MONATSZAHL'] = input['Category']
     features['AUSPRAEGUNG'] = input['Type']
     features['JAHR'] = str(input['Year'])
-    features['MONAT'] = str(input['Month'])
+    features['MONAT'] = str(input['Month']).zfill(2)
     return features
 
 def predict(input):
