@@ -10,8 +10,8 @@ def transform(input):
     features = {}
     features['MONATSZAHL'] = input['Category']
     features['AUSPRAEGUNG'] = input['Type']
-    features['JAHR'] = input['Year']
-    features['MONAT'] = input['Month']
+    features['JAHR'] = str(input['Year'])
+    features['MONAT'] = str(input['Month'])
     return features
 
 def predict(input):
